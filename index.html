@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunarLabs - Soluções em E-commerce e Servidores</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <meta name="theme-color" content="#000000">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos da página */
+        /* Container principal */
+        .hero-container {
+            background: linear-gradient(45deg, #000000, #1C2526, #2E3B4E);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        /* Container do Spline */
+        .spline-embed-container {
+            width: 100%;
+            height: 40vh;
+            min-height: 180px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: transparent;
+        }
+
+        /* Janela simulada para o hero - usando as variáveis CSS */
+        .hero-window {
+            max-width: calc(var(--max-width-small) * 2);
+            margin: -40px auto 0;
+            background: rgba(28, 37, 38, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: var(--padding-box);
+            position: relative;
+            z-index: 2;
+            animation: fadeInGlow 1.2s ease-out;
+            text-align: center;
+        }
+
+        .hero-window h1 {
+            font-size: var(--font-size-title);
+            margin: 0 0 var(--margin-vertical);
+            color: var(--color-text);
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .hero-window p {
+            font-size: var(--font-size-text);
+            color: var(--color-text);
+            margin: 0 0 var(--margin-vertical);
+            line-height: 1.6;
+        }
+
+        /* Header fixo */
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .logo-img {
+            height: 48px;
+            width: 48px;
+            object-fit: contain;
+        }
+        .company-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5rem;
+            position: relative;
+            letter-spacing: 1px;
+            color: #1a7f1a;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .company-title::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                #33ff33 49.9%,
+                #66ff66 50%,
+                #33ff33 50.1%,
+                transparent
+            );
+            background-size: 100% 8px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: phosphor-scan 0.8s linear infinite;
+            mix-blend-mode: screen;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #E0E0E0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #00D4FF;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        .spline-embed-container {
+            width: 100vw;
+            max-width: 100vw;
+            height: 48vh;
+            min-height: 180px;
+            overflow: hidden;
+            margin: 0 auto 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .spline-embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .main-header {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+            .spline-embed-container {
+                height: 40vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="Logo LunarLabs" class="logo-img" />
+            <span class="company-title" data-text="LunarLabs">LunarLabs</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Serviços</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </header>
+
+    <div class="hero-container">
+        <div class="spline-embed-container">
+            <iframe src='https://my.spline.design/moonparallax-9AyEMf57zSyfuSRnhPKQRAuJ/' allowfullscreen title="3D Parallax Moon"></iframe>
+        </div>
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="hero-window">
+                <h1 class="crt-title" data-text="Soluções Inteligentes em Tecnologia">Soluções Inteligentes em Tecnologia</h1>
+                <p>A LunarLabs desenvolve aplicações web, automações e soluções em Machine Learning sob medida para o seu negócio. Inove com tecnologia de ponta, segurança e eficiência.</p>
+                <a href="#contact" class="cta-button">Solicite um Orçamento</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sobre a LunarLabs -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2 class="crt-title">Sobre a LunarLabs</h2>
+            <p>A LunarLabs é especialista em desenvolvimento de sistemas, automação de processos e soluções baseadas em dados. Utilizamos Python, Django, Machine Learning, Selenium e Pandas para criar projetos robustos, inovadores e personalizados. Nossa experiência inclui integração de sistemas, automação de backups, análise de dados e desenvolvimento de interfaces modernas, sempre com foco em segurança, performance e usabilidade.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="crt-title">Nossas Soluções</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3 class="crt-title">Desenvolvimento Web</h3>
+                <p>Aplicações web modernas, seguras e escaláveis utilizando Python, Django e integração com bancos de dados.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="crt-title">Automação & Dados</h3>
+                <p>Automação de tarefas, scraping, análise e manipulação de dados com Machine Learning, Pandas e Selenium.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="crt-title">Infraestrutura & Backups</h3>
+                <p>Implantação de servidores Linux, automação de backups (projeto open source com Raspberry Pi) e integração de sistemas para máxima segurança e eficiência.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="crt-title">Entre em Contato</h2>
+        <form>
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="E-mail" required>
+            <textarea placeholder="Mensagem" required></textarea>
+            <button type="submit" class="cta-button">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 LunarLabs. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
