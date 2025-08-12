@@ -39,6 +39,7 @@
             max-width: calc(var(--max-width-small) * 2);
             margin: -40px auto 0;
             background: rgba(28, 37, 38, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -71,8 +72,8 @@
             padding: 0 32px;
             height: 80px;
             background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
@@ -92,34 +93,10 @@
         .company-title {
             font-family: 'Press Start 2P', cursive;
             font-size: 1.5rem;
-            position: relative;
             letter-spacing: 1px;
-            color: #1a7f1a;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        
-        .company-title::before {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent,
-                #33ff33 49.9%,
-                #66ff66 50%,
-                #33ff33 50.1%,
-                transparent
-            );
-            background-size: 100% 8px;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: phosphor-scan 0.8s linear infinite;
-            mix-blend-mode: screen;
+            color: #33ff33;
+            /* Efeito de brilho usando filter para máxima consistência */
+            filter: drop-shadow(0 0 5px #33ff33) drop-shadow(0 0 10px rgba(51, 255, 51, 0.7));
         }
         .nav-links {
             display: flex;
@@ -198,25 +175,25 @@
     <!-- Sobre a LunarLabs -->
     <section id="about" class="about-section">
         <div class="about-content">
-            <h2 class="crt-title">Sobre a LunarLabs</h2>
+            <h2 class="crt-title" data-text="Sobre a LunarLabs">Sobre a LunarLabs</h2>
             <p>A LunarLabs é especialista em desenvolvimento de sistemas, automação de processos e soluções baseadas em dados. Utilizamos Python, Django, Machine Learning, Selenium e Pandas para criar projetos robustos, inovadores e personalizados. Nossa experiência inclui integração de sistemas, automação de backups, análise de dados e desenvolvimento de interfaces modernas, sempre com foco em segurança, performance e usabilidade.</p>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="crt-title">Nossas Soluções</h2>
+        <h2 class="crt-title" data-text="Nossas Soluções">Nossas Soluções</h2>
         <div class="service-grid">
             <div class="service-card">
-                <h3 class="crt-title">Desenvolvimento Web</h3>
+                <h3 class="crt-title" data-text="Desenvolvimento Web">Desenvolvimento Web</h3>
                 <p>Aplicações web modernas, seguras e escaláveis utilizando Python, Django e integração com bancos de dados.</p>
             </div>
             <div class="service-card">
-                <h3 class="crt-title">Automação & Dados</h3>
+                <h3 class="crt-title" data-text="Automação & Dados">Automação & Dados</h3>
                 <p>Automação de tarefas, scraping, análise e manipulação de dados com Machine Learning, Pandas e Selenium.</p>
             </div>
             <div class="service-card">
-                <h3 class="crt-title">Infraestrutura & Backups</h3>
+                <h3 class="crt-title" data-text="Infraestrutura & Backups">Infraestrutura & Backups</h3>
                 <p>Implantação de servidores Linux, automação de backups (projeto open source com Raspberry Pi) e integração de sistemas para máxima segurança e eficiência.</p>
             </div>
         </div>
@@ -224,7 +201,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="crt-title">Entre em Contato</h2>
+        <h2 class="crt-title" data-text="Entre em Contato">Entre em Contato</h2>
         <form>
             <input type="text" placeholder="Nome" required>
             <input type="email" placeholder="E-mail" required>
