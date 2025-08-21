@@ -1,218 +1,261 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LunarLabs - Soluções em E-commerce e Servidores</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
-    <meta name="theme-color" content="#000000">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Estilos específicos da página */
-        /* Container principal */
-        .hero-container {
-            background: linear-gradient(45deg, #000000, #1C2526, #2E3B4E);
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
-            padding-top: 80px;
-            min-height: 100vh;
-        }
-        
-        /* Container do Spline */
-        .spline-embed-container {
-            width: 100%;
-            height: 40vh;
-            min-height: 180px;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: transparent;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunarLabs - Desenvolvimento & Segurança</title>
+  <meta name="description" content="Soluções avançadas em desenvolvimento web, automações e segurança cibernética. Tecnologia que protege e escala.">
 
-        /* Janela simulada para o hero - usando as variáveis CSS */
-        .hero-window {
-            max-width: calc(var(--max-width-small) * 2);
-            margin: -40px auto 0;
-            background: rgba(28, 37, 38, 0.95);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: var(--padding-box);
-            position: relative;
-            z-index: 2;
-            animation: fadeInGlow 1.2s ease-out;
-            text-align: center;
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='rotate(-15 50 50)'%3E%3Cellipse cx='40' cy='50' rx='28' ry='28' fill='%2300D4FF'/%3E%3Cellipse cx='48' cy='50' rx='25' ry='25' fill='black'/%3E%3C/g%3E%3C/svg%3E" />
 
-        .hero-window h1 {
-            font-size: var(--font-size-title);
-            margin: 0 0 var(--margin-vertical);
-            color: var(--color-text);
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500&display=swap" rel="stylesheet" />
 
-        .hero-window p {
-            font-size: var(--font-size-text);
-            color: var(--color-text);
-            margin: 0 0 var(--margin-vertical);
-            line-height: 1.6;
-        }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-        /* Header fixo */
-        .main-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-            height: 80px;
-            background: rgba(0, 0, 0, 0.95);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
-        }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .logo-img {
-            height: 48px;
-            width: 48px;
-            object-fit: contain;
-        }
-        .company-title {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            color: #33ff33;
-            /* Efeito de brilho usando filter para máxima consistência */
-            filter: drop-shadow(0 0 5px #33ff33) drop-shadow(0 0 10px rgba(51, 255, 51, 0.7));
-        }
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #E0E0E0;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: #00D4FF;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-        }
-        .spline-embed-container {
-            width: 100vw;
-            max-width: 100vw;
-            height: 48vh;
-            min-height: 180px;
-            overflow: hidden;
-            margin: 0 auto 0 auto;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .spline-embed-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-        @media (max-width: 900px) {
-            .main-header {
-                flex-direction: column;
-                height: auto;
-                padding: 12px 8px;
-                gap: 8px;
-            }
-            .spline-embed-container {
-                height: 40vh;
-            }
-        }
-    </style>
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/interactive.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-left">
-            <img src="logo.png" alt="Logo LunarLabs" class="logo-img" />
-            <span class="company-title" data-text="LunarLabs">LunarLabs</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            LunarLabs
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#stats">Resultados</a></li>
+                <li><a href="#testimonials">Clientes</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="hero-container">
-        <div class="spline-embed-container">
-            <iframe src='https://my.spline.design/moonparallax-9AyEMf57zSyfuSRnhPKQRAuJ/' allowfullscreen title="3D Parallax Moon"></iframe>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="spline-container">
+            <iframe 
+                src="https://my.spline.design/claritystream-dYBdof1Bcr26sTE59sddPFE0/" 
+                title="Animação interativa de fundo"
+                frameborder="0" 
+                width="100%" 
+                height="100%"
+                allowfullscreen>
+            </iframe>
         </div>
-        <!-- Hero Section -->
-        <section id="home">
-            <div class="hero-window">
-                <h1 class="crt-title" data-text="Soluções Inteligentes em Tecnologia">Soluções Inteligentes em Tecnologia</h1>
-                <p>A LunarLabs desenvolve aplicações web, automações e soluções em Machine Learning sob medida para o seu negócio. Inove com tecnologia de ponta, segurança e eficiência.</p>
+        <div class="hero-content">
+            <h1>Design & Desenvolvimento Profissionais</h1>
+            <p>Desenvolvemos aplicações web, automações e soluções em segurança cibernética com foco em performance, escalabilidade e proteção de dados.</p>
+            <div>
                 <a href="#contact" class="cta-button">Solicite um Orçamento</a>
-            </div>
-        </section>
-    </div>
-
-    <!-- Sobre a LunarLabs -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2 class="crt-title" data-text="Sobre a LunarLabs">Sobre a LunarLabs</h2>
-            <p>A LunarLabs é especialista em desenvolvimento de sistemas, automação de processos e soluções baseadas em dados. Utilizamos Python, Django, Machine Learning, Selenium e Pandas para criar projetos robustos, inovadores e personalizados. Nossa experiência inclui integração de sistemas, automação de backups, análise de dados e desenvolvimento de interfaces modernas, sempre com foco em segurança, performance e usabilidade.</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 class="crt-title" data-text="Nossas Soluções">Nossas Soluções</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3 class="crt-title" data-text="Desenvolvimento Web">Desenvolvimento Web</h3>
-                <p>Aplicações web modernas, seguras e escaláveis utilizando Python, Django e integração com bancos de dados.</p>
-            </div>
-            <div class="service-card">
-                <h3 class="crt-title" data-text="Automação & Dados">Automação & Dados</h3>
-                <p>Automação de tarefas, scraping, análise e manipulação de dados com Machine Learning, Pandas e Selenium.</p>
-            </div>
-            <div class="service-card">
-                <h3 class="crt-title" data-text="Infraestrutura & Backups">Infraestrutura & Backups</h3>
-                <p>Implantação de servidores Linux, automação de backups (projeto open source com Raspberry Pi) e integração de sistemas para máxima segurança e eficiência.</p>
+                <a href="#services" class="secondary-button">Conheça Nossos Serviços</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Serviços -->
+    <section id="services" class="section">
+        <h2 class="section-title">Serviços</h2>
+        <div class="grid">
+            <div class="card card-3d" data-aos="fade-up" data-aos-delay="100">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                    </div>
+                    <div class="terminal-content">
+                        <span class="crt-text" data-text="$ npm create shop">$ npm create shop</span>
+                    </div>
+                </div>
+                <h3>Desenvolvimento Web</h3>
+                <p>Sites e sistemas modernos com React, Node.js e APIs seguras. Design responsivo e performance otimizada.</p>
+                <div class="tech-stack">
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="React">React</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="90"></div>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="Node.js">Node.js</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                    </div>
+                    <div class="terminal-content">
+                        <span class="crt-text" data-text="$ sudo systemctl start">$ sudo systemctl start</span>
+                    </div>
+                </div>
+                <h3>Segurança Cibernética</h3>
+                <p>Proteção contra ataques, criptografia de dados, pentest e hardening de servidores.</p>
+                <div class="tech-stack">
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="Docker">Docker</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="88"></div>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="Nginx">Nginx</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="92"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-3d" data-aos="fade-up" data-aos-delay="300">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                    </div>
+                    <div class="terminal-content">
+                        <span class="crt-text" data-text="$ python automate.py">$ python automate.py</span>
+                    </div>
+                </div>
+                <h3>Automações Inteligentes</h3>
+                <p>Robôs para tarefas repetitivas, scraping e integração de sistemas com Python e Selenium.</p>
+                <div class="tech-stack">
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="Python">Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="95"></div>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <span class="crt-text" data-text="Selenium">Selenium</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="87"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section id="stats" class="stats">
+        <h2 class="section-title">Resultados</h2>
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up">
+                <h3>120+</h3>
+                <p>Projetos Entregues</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>98%</h3>
+                <p>Satisfação de Clientes</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>50+</h3>
+                <p>Empresas Protegidas</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>10+</h3>
+                <p>Anos de Experiência</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Clientes</h2>
+        <div class="testimonial-card" data-aos="fade-up">
+            <p>"A LunarLabs transformou nosso sistema legado em uma plataforma moderna e segura. A equipe é técnica, ágil e extremamente confiável."</p>
+            <div class="client">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Mendes">
+                <div class="client-info">
+                    <h4>Carlos Mendes</h4>
+                    <p>CEO, TechNova</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <h2 class="section-title">Tecnologias</h2>
+        <p>Trabalhamos com as ferramentas mais modernas e seguras do mercado.</p>
+        <div class="logos">
+            <i class="fab fa-react" title="React" aria-label="React"></i>
+            <i class="fab fa-node-js" title="Node.js" aria-label="Node.js"></i>
+            <i class="fab fa-js" title="JavaScript" aria-label="JavaScript"></i>
+            <i class="fab fa-python" title="Python" aria-label="Python"></i>
+            <i class="fab fa-docker" title="Docker" aria-label="Docker"></i>
+            <i class="fas fa-database" title="Databases" aria-label="Databases"></i>
+            <i class="fab fa-aws" title="Amazon Web Services" aria-label="Amazon Web Services"></i>
+            <i class="fab fa-linux" title="Linux" aria-label="Linux"></i>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="cta-newsletter">
+        <h2 class="crt-font">FIQUE POR DENTRO</h2>
+        <p>Receba dicas, novidades e ofertas exclusivas sobre desenvolvimento e segurança digital.</p>
+        <form class="newsletter-form" aria-label="Formulário da Newsletter">
+            <input type="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
+            <button type="submit" aria-label="Inscrever">Inscrever</button>
+        </form>
+    </section>
+
+    <!-- Contato -->
     <section id="contact" class="contact">
-        <h2 class="crt-title" data-text="Entre em Contato">Entre em Contato</h2>
-        <form>
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="E-mail" required>
-            <textarea placeholder="Mensagem" required></textarea>
-            <button type="submit" class="cta-button">Enviar</button>
+        <h2 class="section-title-crt">CONTATO</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" aria-label="Formulário de Contato">
+            <input type="text" name="name" placeholder="Seu nome" required aria-label="Seu nome" />
+            <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
+            <textarea name="message" placeholder="Mensagem" required aria-label="Sua mensagem"></textarea>
+            <button type="submit" aria-label="Enviar mensagem">Enviar Mensagem</button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 LunarLabs. Todos os direitos reservados.</p>
+        <div class="footer-content">
+            <p class="crt-font">&copy; 2025 LUNARLABS</p>
+            <div class="social-links">
+                <a href="#" title="LinkedIn" aria-label="Acesse nosso LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="GitHub" aria-label="Acesse nosso GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter" aria-label="Acesse nosso Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Email" aria-label="Envie-nos um email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>Feito com segurança e precisão.</p>
+        </div>
     </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

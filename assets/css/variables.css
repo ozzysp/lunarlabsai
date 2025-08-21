@@ -1,0 +1,53 @@
+:root {
+  /* Cores */
+  --primary: #89CFF0;
+  --secondary: #A7C7E7;
+  --accent: #C6E2FF;
+  --lavender: #E6E6FA;
+  --rose: #FDD5E5;
+  --dark: #111111;
+  --darker: #000000;
+  --light: #FFFFFF;
+  --text: #F0F0F0;
+  --text-secondary: #B8B8B8;
+  --card-bg: rgba(17, 17, 17, 0.3);
+  --overlay: rgba(0, 0, 0, 0.2);
+  
+  /* Gradientes */
+  --gradient-rainbow: linear-gradient(90deg, #89CFF0 0%, #C6E2FF 25%, #E6E6FA 50%, #FDD5E5 75%, #A7C7E7 100%);
+  --gradient-subtle: linear-gradient(to right, rgba(137, 207, 240, 0.1), rgba(230, 230, 250, 0.1));
+  
+  /* Bordas e Sombras Suaves */
+  --border-light: 1px solid rgba(255, 255, 255, 0.03);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  /* Sombras e Efeitos */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.2);
+  --glow-primary: 0 0 20px rgba(0, 102, 255, 0.3);
+  --glow-secondary: 0 0 20px rgba(0, 212, 255, 0.3);
+  
+  /* Bordas e Espaçamentos */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --max-width: 1440px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* Tipografia */
+  --font-main: 'Readex Pro', sans-serif;
+
+  /* Z-index */
+  --z-header: 1000;
+  --z-modal: 2000;
+  --z-overlay: 1500;
+  --z-dropdown: 1200;
+}
