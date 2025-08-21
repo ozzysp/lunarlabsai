@@ -1,0 +1,142 @@
+/* ===== Overrides de Responsividade e Navbar (v2) ===== */
+
+/* Segurança contra overflow lateral */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video, canvas, svg, iframe { max-width: 100%; height: auto; display: block; }
+* { box-sizing: border-box; min-width: 0; }
+
+/* HEADER LAYOUT: sempre em linha, logo à esquerda e menu à direita */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+/* Mantém FIXO em desktop (do seu main.min.css) e STICKY no mobile
+   para não sobrepor conteúdo em telas pequenas */
+@media (max-width: 768px) {
+  header { position: sticky !important; top: 0; }
+}
+
+/* Logo: volta ao peso ULTRA-LIGHT (200) e não entra no meio do menu */
+header .logo {
+  margin: 0;
+  font-weight: 200; /* Readex Pro ultra-light */
+  white-space: nowrap;
+}
+
+/* Menu sempre horizontal */
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+/* Links não quebram linha; em telas pequenas, rolam horizontalmente
+   (em vez de empilhar verticalmente) */
+@media (max-width: 768px) {
+  header nav ul {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  header nav ul::-webkit-scrollbar { display: none; }
+  header nav a { white-space: nowrap; }
+}
+
+/* HERO: reserva espaço no topo em desktop; como o header é sticky no mobile,
+   não precisamos de muito padding-top lá. */
+.hero { position: relative; text-align: center; padding-top: clamp(96px, 12vh, 160px); }
+@media (max-width: 768px) { .hero { padding-top: 16px; } }
+
+.hero-content { position: relative; z-index: 1; }
+
+/* ===== Spline responsivo com fallback estático ===== */
+.spline-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  min-height: 300px;
+  max-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.spline-wrapper iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+  pointer-events: none; /* evita capturar toques/scroll */
+  object-fit: cover;
+}
+
+.spline-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: url('assets/images/spline-preview.png') center/cover no-repeat;
+}
+
+/* Desliga WebGL em telas pequenas e mostra screenshot */
+/* MOBILE HEADER: logo em cima, menu centralizado abaixo */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: sticky !important;
+    top: 0;
+    background: rgba(0,0,0,0.6); /* mantém contraste */
+    padding: 12px;
+  }
+
+  header .logo {
+    font-weight: 200; /* ultra-light */
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  header nav ul {
+    flex-direction: row;       /* mantém horizontal */
+    justify-content: center;   /* centraliza */
+    gap: 16px;
+    flex-wrap: wrap;           /* se faltar espaço, quebra */
+  }
+}
+@media (max-width: 768px) {
+  .spline-wrapper iframe { display: none; }
+  .spline-fallback { display: block; }
+}
+
+/* Grids adaptáveis (reforço) */
+.grid, .services-grid, .testimonials-grid, .stats-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+@media (max-width: 768px) {
+  .grid, .services-grid, .testimonials-grid, .stats-grid, .contact-grid {
+    grid-template-columns: 1fr; gap: 24px;
+  }
+}
+
+/* Botões fluidos em telas muito pequenas */
+@media (max-width: 480px) {
+  .cta-button, .secondary-button { width: 100%; justify-content: center; padding: 14px 16px; }
+}
+
+/* Acessibilidade: reduz movimentos se preferido pelo usuário */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

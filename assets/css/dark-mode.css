@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: rgba(30, 30, 30, 0.7);
+    --text: #ffffff;
+    --text-secondary: #b8b8b8;
+  }
+
+  body {
+    background-color: #000000;
+    color: var(--text);
+  }
+
+  nav a {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--primary) !important;
+    background: rgba(137, 207, 240, 0.15);
+    text-shadow: 0 0 10px rgba(137, 207, 240, 0.3);
+  }
+
+  .card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
