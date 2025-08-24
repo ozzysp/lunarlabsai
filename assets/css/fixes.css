@@ -1,9 +1,7 @@
 /* ===== Overrides de Responsividade e Navbar (v2) ===== */
 
-/* Segurança contra overflow lateral */
-html, body { max-width: 100%; overflow-x: hidden; }
-img, video, canvas, svg, iframe { max-width: 100%; height: auto; display: block; }
-* { box-sizing: border-box; min-width: 0; }
+
+
 
 /* HEADER LAYOUT: sempre em linha, logo à esquerda e menu à direita */
 header {
