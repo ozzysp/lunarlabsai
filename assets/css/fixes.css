@@ -12,15 +12,14 @@ header {
   justify-content: space-between;
   gap: 24px;
   padding: 12px 24px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   z-index: 9999;
 }
 
-/* Mantém FIXO em desktop (do seu main.min.css) e STICKY no mobile
-   para não sobrepor conteúdo em telas pequenas */
+/* Header estático em todas as telas */
 @media (max-width: 768px) {
-  header { position: sticky !important; top: 0; }
+  header { position: static !important; }
 }
 
 /* Logo: volta ao peso ULTRA-LIGHT (200) e não entra no meio do menu */
@@ -47,7 +46,6 @@ header nav ul {
 @media (max-width: 768px) {
   header nav ul {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   header nav ul::-webkit-scrollbar { display: none; }
@@ -57,37 +55,188 @@ header nav ul {
 /* HERO: reserva espaço no topo em desktop; como o header é sticky no mobile,
    não precisamos de muito padding-top lá. */
 .hero { position: relative; text-align: center; padding-top: clamp(96px, 12vh, 160px); }
-@media (max-width: 768px) { .hero { padding-top: 16px; } }
+
+/* Ajusta padding para mobile - OTIMIZADO PARA TELAS PEQUENAS */
+@media (max-width: 768px) { 
+  .hero { padding-top: 12px; } 
+}
+
+@media (max-width: 480px) { 
+  .hero { padding-top: 8px; } 
+}
+
+@media (max-width: 360px) { 
+  .hero { padding-top: 6px; } 
+}
 
 .hero-content { position: relative; z-index: 1; }
 
-/* ===== Spline responsivo com fallback estático ===== */
-.spline-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  min-height: 300px;
-  max-height: 600px;
-  border-radius: 16px;
-  overflow: hidden;
+/* Otimiza hero-content para mobile - SOLUÇÃO ROBUSTA */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 16px !important;
+    margin-top: 20px !important;
+  }
+  
+  /* SOBRESCREVE TODOS OS OUTROS ESTILOS */
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.1 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+  
+  .hero-content p {
+    font-size: clamp(1rem, 4vw, 1.2rem) !important;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
-.spline-wrapper iframe {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  border: none;
-  pointer-events: none; /* evita capturar toques/scroll */
-  object-fit: cover;
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 10px !important;
+    margin-top: 14px !important;
+  }
+  
+  /* SOBRESCREVE TODOS OS OUTROS ESTILOS */
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.8rem !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+  
+  .hero-content p {
+    font-size: clamp(0.85rem, 3.2vw, 1rem) !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.2rem !important;
+  }
 }
 
-.spline-fallback {
-  display: none;
-  width: 100%;
-  height: 100%;
-  background: url('assets/images/spline-preview.png') center/cover no-repeat;
+@media (max-width: 360px) {
+  .hero-content {
+    padding: 0 8px !important;
+    margin-top: 10px !important;
+  }
+  
+  /* SOBRESCREVE TODOS OS OUTROS ESTILOS */
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1 {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.6rem !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+  
+  .hero-content p {
+    font-size: clamp(0.8rem, 2.8vw, 0.95rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1rem !important;
+  }
 }
 
-/* Desliga WebGL em telas pequenas e mostra screenshot */
+/* Mobile ultra pequeno - AJUSTE EXTRA PARA "DESIGN" */
+@media (max-width: 320px) {
+  .hero-content {
+    padding: 0 6px !important;
+    margin-top: 8px !important;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    line-height: 1.0 !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: -0.02em !important;
+  }
+  
+  .hero-content p {
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.8rem !important;
+  }
+}
+
+
+
+/* ===== SOBRESCRITA FINAL - GARANTE QUE FUNCIONE ===== */
+/* Força a aplicação dos estilos em todos os dispositivos móveis */
+@media (max-width: 768px) {
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1,
+  .hero > h1,
+  .hero .hero-content > h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1,
+  .hero > h1,
+  .hero .hero-content > h1 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.8rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1,
+  .hero > h1,
+  .hero .hero-content > h1 {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.6rem !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1,
+  .hero > h1,
+  .hero .hero-content > h1 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    line-height: 1.0 !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+
+@media (max-width: 280px) {
+  .hero h1,
+  .hero-content h1,
+  .hero .hero-content h1,
+  .hero > h1,
+  .hero .hero-content > h1 {
+    font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
+    line-height: 0.95 !important;
+    margin-bottom: 0.4rem !important;
+    letter-spacing: -0.03em !important;
+  }
+}
+
 /* MOBILE HEADER: logo em cima, menu centralizado abaixo */
 @media (max-width: 768px) {
   header {
@@ -95,9 +244,8 @@ header nav ul {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    position: sticky !important;
-    top: 0;
-    background: rgba(0,0,0,0.6); /* mantém contraste */
+    position: static !important;
+    background: transparent; /* navbar transparente */
     padding: 12px;
   }
 
@@ -114,10 +262,7 @@ header nav ul {
     flex-wrap: wrap;           /* se faltar espaço, quebra */
   }
 }
-@media (max-width: 768px) {
-  .spline-wrapper iframe { display: none; }
-  .spline-fallback { display: block; }
-}
+
 
 /* Grids adaptáveis (reforço) */
 .grid, .services-grid, .testimonials-grid, .stats-grid, .contact-grid {
@@ -139,4 +284,41 @@ header nav ul {
 /* Acessibilidade: reduz movimentos se preferido pelo usuário */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Desktop Iframe (Fullscreen) */
+.hero-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile Iframe (16:9 Aspect Ratio) */
+@media (max-width: 768px) {
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .hero-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 0;
+  }
 }
