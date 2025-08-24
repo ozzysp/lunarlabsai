@@ -1,0 +1,275 @@
+/* ===== SOLUÇÃO COMPLETA DA NAVBAR RESPONSIVA ===== */
+
+/* RESET COMPLETO - Remove todos os estilos conflitantes */
+header,
+header *,
+header .container,
+header .logo,
+header nav,
+header nav ul,
+header nav li,
+header nav a {
+  all: unset;
+  box-sizing: border-box;
+}
+
+/* HEADER PRINCIPAL - Container estático que move com o scroll */
+header {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  z-index: 9999 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* CONTAINER PRINCIPAL - Flexbox responsivo */
+header .container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 20px 24px !important;
+  gap: 40px !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* BOX DO LOGO - Container separado e bem definido */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  font-size: 2.8rem !important;
+  font-weight: 200 !important;
+  font-family: 'Readex Pro', sans-serif !important;
+  background: linear-gradient(90deg, #9D4EDD 0%, #7BB8FF 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  padding: 12px 20px !important;
+  transition: all 0.3s ease !important;
+  z-index: 10000 !important;
+}
+
+.logo:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* BOX DA NAVEGAÇÃO - Container separado e bem definido */
+nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex-shrink: 0 !important;
+  padding: 8px 16px !important;
+  z-index: 10000 !important;
+}
+
+nav ul {
+  display: flex !important;
+  flex-direction: row !important;
+  list-style: none !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+}
+
+nav li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+nav a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #E0E0E0 !important;
+  text-decoration: none !important;
+  font-weight: 400 !important;
+  font-size: 0.95rem !important;
+  font-family: 'Readex Pro', sans-serif !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  background: transparent !important;
+  min-width: 80px !important;
+  text-align: center !important;
+}
+
+nav a:hover {
+  color: #00D4FF !important;
+  background: rgba(0, 212, 255, 0.1) !important;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+nav a:focus {
+  outline: 2px solid #00D4FF !important;
+  outline-offset: 2px !important;
+  background: rgba(0, 212, 255, 0.2) !important;
+}
+
+/* ===== RESPONSIVIDADE COMPLETA ===== */
+
+/* Tablet e telas médias */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    padding: 16px 20px !important;
+  }
+  
+  .logo {
+    font-size: 2.4rem !important;
+    order: 1 !important;
+    margin-bottom: 0 !important;
+    padding: 10px 16px !important;
+  }
+  
+  nav {
+    order: 2 !important;
+    width: auto !important;
+    padding: 6px 12px !important;
+  }
+  
+  nav ul {
+    gap: 6px !important;
+  }
+  
+  nav a {
+    font-size: 0.9rem !important;
+    padding: 8px 12px !important;
+    min-width: 70px !important;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  header .container {
+    padding: 12px 16px !important;
+    gap: 16px !important;
+  }
+  
+  .logo {
+    font-size: 2rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  nav {
+    padding: 4px 8px !important;
+  }
+  
+  nav ul {
+    gap: 4px !important;
+  }
+  
+  nav a {
+    font-size: 0.85rem !important;
+    padding: 6px 10px !important;
+    min-width: 60px !important;
+  }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 360px) {
+  header .container {
+    padding: 10px 12px !important;
+    gap: 12px !important;
+  }
+  
+  .logo {
+    font-size: 1.8rem !important;
+    padding: 6px 10px !important;
+  }
+  
+  nav {
+    padding: 3px 6px !important;
+  }
+  
+  nav ul {
+    gap: 3px !important;
+  }
+  
+  nav a {
+    font-size: 0.8rem !important;
+    padding: 5px 8px !important;
+    min-width: 55px !important;
+  }
+}
+
+/* ===== CORREÇÃO DO HERO ===== */
+
+/* Remove padding-top já que o header não é mais fixo */
+.hero {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 0 !important;
+  }
+}
+
+/* ===== ANIMAÇÕES E TRANSIÇÕES ===== */
+
+/* Transições suaves para todos os elementos */
+header,
+header .container,
+.logo,
+nav,
+nav ul,
+nav a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ===== CORREÇÃO DE CONFLITOS FINAL ===== */
+
+/* Remove TODOS os estilos conflitantes de outros arquivos */
+header.scrolled-down,
+header.scrolled-up {
+  transform: none !important;
+}
+
+/* Garante que o header não seja afetado por transformações externas */
+header {
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Remove qualquer background cinza que possa estar vindo de outros arquivos */
+header,
+header .container {
+  background-color: transparent !important;
+}
+
+/* Garante que o z-index seja sempre o mais alto */
+header {
+  z-index: 9999 !important;
+}
+
+.logo,
+nav {
+  z-index: 10000 !important;
+}

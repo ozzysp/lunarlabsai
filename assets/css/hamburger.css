@@ -1,0 +1,188 @@
+/* ===== MENU HAMBÚRGUER MODERNO E SOFISTICADO ===== */
+
+/* Botão hambúrguer - oculto por padrão */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10001;
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Barras do hambúrguer */
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #9D4EDD 0%, #7BB8FF 100%);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+  position: relative;
+}
+
+/* Animação das barras quando ativo */
+.hamburger.is-active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Efeito hover no botão */
+.hamburger:hover .bar {
+  background: linear-gradient(90deg, #B366E8 0%, #8FC5FF 100%);
+  box-shadow: 0 0 8px rgba(157, 78, 221, 0.3);
+}
+
+/* Menu mobile - overlay completo */
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Responsivo - Mobile */
+@media (max-width: 768px) {
+  header {
+    position: relative !important;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    /* Posicionamento */
+    position: absolute;
+    top: 70px; /* Abaixo do header */
+    right: 24px; /* Alinhado com o hamburger */
+    
+    /* Layout */
+    display: flex;
+    flex-direction: column !important; /* Garante o layout vertical */
+    align-items: flex-end; /* Alinha os itens (li) à direita */
+    
+    /* Aparência */
+    width: auto;
+    padding: 10px;
+    background: transparent;
+
+    /* Animação */
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; /* Alinha o <a> à direita dentro do <li> */
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 10px 0;
+    text-align: right !important;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #E0E0E0;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    transition: color 0.2s ease-in-out;
+    width: auto;
+  }
+
+  .nav-links a:hover {
+    color: #00D4FF;
+  }
+}
+
+/* Animações adicionais para suavidade */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Prevenção de scroll quando menu está aberto */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Melhorias de acessibilidade */
+.hamburger:focus {
+  outline: 2px solid #9D4EDD;
+  outline-offset: 2px;
+}
+
+.nav-links a:focus {
+  outline: 2px solid #9D4EDD;
+  outline-offset: 2px;
+}
+
+/* Otimizações de performance */
+.hamburger,
+.hamburger .bar,
+.nav-links,
+.nav-links li,
+.nav-links a {
+  will-change: transform, opacity;
+}
+
+/* Suporte para dispositivos com preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger .bar,
+  .nav-links,
+  .nav-links li,
+  .nav-links a {
+    transition: none;
+  }
+}
